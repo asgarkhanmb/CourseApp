@@ -52,7 +52,7 @@ namespace CourseApp.Controllers
             var data = await _educationService.SearchByNameAsync(name);
             if (data.Count != 0)
             {
-                ConsoleColor.Red.WriteConsole("This Education already created!! Please again created");
+                ConsoleColor.Red.WriteConsole(ResponseMesagges.ExistMessage+ResponseMesagges.EnterAgainMessage);
                 goto Education;
             }
             Console.WriteLine("Create Education color");
@@ -65,7 +65,7 @@ namespace CourseApp.Controllers
             await _educationService.CreateAsync(new Education { Name = name.Trim().ToLower(), Color = color.Trim().ToLower(), CreatedDate = dateTime });
 
 
-            ConsoleColor.Green.WriteConsole("Succesfuly created");
+            ConsoleColor.Green.WriteConsole(ResponseMesagges.SuccsessMessage);
         }
 
         public async Task DeleteAsync()
@@ -199,7 +199,7 @@ namespace CourseApp.Controllers
         }
         public async Task SortWithCreatedDateAsync()
         {
-            ConsoleColor.Blue.WriteConsole("Choose the sort:\n ASC or DESC");
+            ConsoleColor.Blue.WriteConsole(ResponseMesagges.ChooseSort);
             string text = Console.ReadLine();
             var datas = await _educationService.SortWithCreatedDateAsync(text);
             foreach (var data in datas)
