@@ -49,8 +49,8 @@ namespace CourseApp.Controllers
         {
         Education: Console.WriteLine("Create Education");
             string name = Console.ReadLine();
-            var data = await _educationService.SearchByNameAsync(name);
-            if (data.Count != 0)
+            var data = await _educationService.GetByNameAsync(name);
+            if (data is not null)
             {
                 ConsoleColor.Red.WriteConsole(ResponseMesagges.ExistMessage+ResponseMesagges.EnterAgainMessage);
                 goto Education;
@@ -70,26 +70,36 @@ namespace CourseApp.Controllers
 
         public async Task DeleteAsync()
         {
-            var data = await _educationService.GetAllAsync();
-            foreach (var item in data)
+            try
             {
-                Console.WriteLine("Id:" + item.Id + " Name:" + item.Name + " CreatedDate:" + item.CreatedDate);
-            }
+                var data = await _educationService.GetAllAsync();
+                foreach (var item in data)
+                {
+                    Console.WriteLine("Id:" + item.Id + " Name:" + item.Name + " CreatedDate:" + item.CreatedDate);
+                }
 
-        Id: Console.WriteLine("Select to id:");
-            string idStr = Console.ReadLine();
-            int id;
-            bool isCorrectIdFormat = int.TryParse(idStr, out id);
-            if (isCorrectIdFormat)
-            {
-                var response = await _educationService.GetByIdAsync(id);
-                _educationService.DeleteAsync(response);
-            }
-            else
-            {
-                goto Id;
-            }
+            Id: Console.WriteLine("Select to id:");
+                string idStr = Console.ReadLine();
+                int id;
+                bool isCorrectIdFormat = int.TryParse(idStr, out id);
+                if (isCorrectIdFormat)
+                {
+                    var response = await _educationService.GetByIdAsync(id);
+                    _educationService.DeleteAsync(response);
+                }
+                else
+                {
+                    goto Id;
+                }
 
+
+            }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine(ex.Message);
+            }
+            
 
         }
         public async Task GetByIdAsync()
