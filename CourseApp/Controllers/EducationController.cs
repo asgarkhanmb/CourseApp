@@ -16,7 +16,7 @@ namespace CourseApp.Controllers
     public class EducationController
     {
         private readonly IEducationService _educationService;
-        private readonly GroupService _groupService;
+        private readonly IGroupService _groupService;
 
         public EducationController()
         {
