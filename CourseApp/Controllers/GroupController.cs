@@ -53,6 +53,11 @@ namespace CourseApp.Controllers
                 ConsoleColor.Red.WriteConsole(ResponseMesagges.StringMessage);
                 goto GroupName;
             }
+            if (!name.Any(char.IsLetter)) 
+            { 
+              ConsoleColor.Red.WriteConsole(ResponseMesagges.IncorrectMessage);
+                goto GroupName;
+            }
             var response = await _educationService.GetAllAsync();
             foreach (var item in response)
             {
@@ -66,6 +71,7 @@ namespace CourseApp.Controllers
                 ConsoleColor.Red.WriteConsole(ResponseMesagges.StringMessage);
                 goto EducationName;
             }
+            
             int id;
             bool isCorrectIdFormat = int.TryParse(idStr, out id);
 
@@ -90,11 +96,12 @@ namespace CourseApp.Controllers
                     await _groupService.CreateAsync(new Group { Name = name.Trim().ToLower(), EducationId = education.Id, Capacity = capacity, CreatedDate = time });
                     ConsoleColor.Green.WriteConsole(ResponseMesagges.SuccsessMessage);
                 }
-                else
+                else if(capacityStr.Any(char.IsLetter))
                 {
                     ConsoleColor.Red.WriteConsole(ResponseMesagges.IncorrectMessage);
                     goto Capacity;
                 }
+         
             }
 
         }
@@ -107,7 +114,7 @@ namespace CourseApp.Controllers
                 Console.WriteLine("Id:" + item.Id + " Name:" + item.Name + " CreatedDate:" + item.CreatedDate);
             }
 
-        Id: Console.WriteLine("Select to id");
+        Id: Console.WriteLine("Select to id:");
             string idStr = Console.ReadLine();
             int id;
             bool isCorrectIdFormat = int.TryParse(idStr, out id);
@@ -218,7 +225,7 @@ namespace CourseApp.Controllers
                     {
                         data.Result.CreatedDate = DateTime.Now;
                         _groupService.UpdateAsync(data.Result);
-                        ConsoleColor.Green.WriteConsole("Data update succesfuly");
+                        ConsoleColor.Green.WriteConsole("Data update succesfuly..");
                     }
 
                 }

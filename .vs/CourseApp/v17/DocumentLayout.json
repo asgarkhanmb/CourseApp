@@ -3,8 +3,24 @@
   "WorkspaceRootPath": "C:\\Users\\\u018Fsg\u0259rxan\\Desktop\\CourseApp\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{30BB9EF1-D013-4530-8BCC-5E7DB0A2D115}|CourseApp\\CourseApp.csproj|c:\\users\\\u0259sg\u0259rxan\\desktop\\courseapp\\courseapp\\controllers\\educationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{30BB9EF1-D013-4530-8BCC-5E7DB0A2D115}|CourseApp\\CourseApp.csproj|solutionrelative:courseapp\\controllers\\educationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{30BB9EF1-D013-4530-8BCC-5E7DB0A2D115}|CourseApp\\CourseApp.csproj|c:\\users\\\u0259sg\u0259rxan\\desktop\\courseapp\\courseapp\\controllers\\groupcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{30BB9EF1-D013-4530-8BCC-5E7DB0A2D115}|CourseApp\\CourseApp.csproj|solutionrelative:courseapp\\controllers\\groupcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F4349F64-7C63-4405-AC62-8D1973B90423}|Service\\Service.csproj|c:\\users\\\u0259sg\u0259rxan\\desktop\\courseapp\\service\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F4349F64-7C63-4405-AC62-8D1973B90423}|Service\\Service.csproj|solutionrelative:service\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F4349F64-7C63-4405-AC62-8D1973B90423}|Service\\Service.csproj|c:\\users\\\u0259sg\u0259rxan\\desktop\\courseapp\\service\\services\\interfaces\\iuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F4349F64-7C63-4405-AC62-8D1973B90423}|Service\\Service.csproj|solutionrelative:service\\services\\interfaces\\iuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AF4C3749-86B7-450E-9B2A-5171C9862304}|Domain\\Domain.csproj|c:\\users\\\u0259sg\u0259rxan\\desktop\\courseapp\\domain\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AF4C3749-86B7-450E-9B2A-5171C9862304}|Domain\\Domain.csproj|solutionrelative:domain\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,24 +30,97 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "GroupController.cs",
-              "DocumentMoniker": "C:\\Users\\\u018Fsg\u0259rxan\\Desktop\\CourseApp\\CourseApp\\Controllers\\GroupController.cs",
-              "RelativeDocumentMoniker": "CourseApp\\Controllers\\GroupController.cs",
-              "ToolTip": "C:\\Users\\\u018Fsg\u0259rxan\\Desktop\\CourseApp\\CourseApp\\Controllers\\GroupController.cs",
-              "RelativeToolTip": "CourseApp\\Controllers\\GroupController.cs",
-              "ViewState": "AQIAABsAAAAAAAAAAAAYwCoAAABUAAAA",
+              "Title": "EducationController.cs",
+              "DocumentMoniker": "C:\\Users\\\u018Fsg\u0259rxan\\Desktop\\CourseApp\\CourseApp\\Controllers\\EducationController.cs",
+              "RelativeDocumentMoniker": "CourseApp\\Controllers\\EducationController.cs",
+              "ToolTip": "C:\\Users\\\u018Fsg\u0259rxan\\Desktop\\CourseApp\\CourseApp\\Controllers\\EducationController.cs",
+              "RelativeToolTip": "CourseApp\\Controllers\\EducationController.cs",
+              "ViewState": "AQIAALYAAAAAAAAAAADwv3EAAAAnAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-14T13:18:59.449Z",
+              "WhenOpened": "2024-04-14T17:47:47.498Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "UserService.cs",
+              "DocumentMoniker": "C:\\Users\\\u018Fsg\u0259rxan\\Desktop\\CourseApp\\Service\\Services\\UserService.cs",
+              "RelativeDocumentMoniker": "Service\\Services\\UserService.cs",
+              "ToolTip": "C:\\Users\\\u018Fsg\u0259rxan\\Desktop\\CourseApp\\Service\\Services\\UserService.cs",
+              "RelativeToolTip": "Service\\Services\\UserService.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAABAAAAAxAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-14T14:00:28.437Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "IUserService.cs",
+              "DocumentMoniker": "C:\\Users\\\u018Fsg\u0259rxan\\Desktop\\CourseApp\\Service\\Services\\Interfaces\\IUserService.cs",
+              "RelativeDocumentMoniker": "Service\\Services\\Interfaces\\IUserService.cs",
+              "ToolTip": "C:\\Users\\\u018Fsg\u0259rxan\\Desktop\\CourseApp\\Service\\Services\\Interfaces\\IUserService.cs",
+              "RelativeToolTip": "Service\\Services\\Interfaces\\IUserService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAuwAoAAABWAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-14T14:00:04.082Z",
               "EditorCaption": ""
             },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "GroupController.cs",
+              "DocumentMoniker": "C:\\Users\\\u018Fsg\u0259rxan\\Desktop\\CourseApp\\CourseApp\\Controllers\\GroupController.cs",
+              "RelativeDocumentMoniker": "CourseApp\\Controllers\\GroupController.cs",
+              "ToolTip": "C:\\Users\\\u018Fsg\u0259rxan\\Desktop\\CourseApp\\CourseApp\\Controllers\\GroupController.cs",
+              "RelativeToolTip": "CourseApp\\Controllers\\GroupController.cs",
+              "ViewState": "AQIAABcBAAAAAAAAAAAIwBkBAAA2AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-14T13:18:59.449Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "FloatingWindowState": {
+        "Id": "f41017f6-0014-4d10-9f40-56f08ee93e40",
+        "Display": 0,
+        "X": 870,
+        "Y": 22,
+        "Width": 1221,
+        "Height": 711,
+        "WindowState": 0
+      },
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "User.cs",
+              "DocumentMoniker": "C:\\Users\\\u018Fsg\u0259rxan\\Desktop\\CourseApp\\Domain\\Models\\User.cs",
+              "RelativeDocumentMoniker": "Domain\\Models\\User.cs",
+              "ToolTip": "C:\\Users\\\u018Fsg\u0259rxan\\Desktop\\CourseApp\\Domain\\Models\\User.cs",
+              "RelativeToolTip": "Domain\\Models\\User.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAVAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-14T14:03:52.816Z",
+              "EditorCaption": ""
             }
           ]
         }

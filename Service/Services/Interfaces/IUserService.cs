@@ -8,6 +8,8 @@ namespace Service.Services.Interfaces
 {
     public interface IUserService
     {
+        void RegisterUser(string username,string fullName,string email,string password);
+        bool LoginUser(string username, string password);
     }
 }
    
