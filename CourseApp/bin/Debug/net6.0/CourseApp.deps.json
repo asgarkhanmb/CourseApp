@@ -12,7 +12,8 @@
           "Microsoft.EntityFrameworkCore.Design": "6.0.29",
           "Microsoft.EntityFrameworkCore.SqlServer": "6.0.29",
           "Microsoft.EntityFrameworkCore.Tools": "6.0.29",
-          "Service": "1.0.0"
+          "Service": "1.0.0",
+          "Spectre.Console": "0.46.0"
         },
         "runtime": {
           "CourseApp.dll": {}
@@ -398,6 +399,17 @@
           }
         }
       },
+      "Spectre.Console/0.46.0": {
+        "dependencies": {
+          "System.Memory": "4.5.5"
+        },
+        "runtime": {
+          "lib/net6.0/Spectre.Console.dll": {
+            "assemblyVersion": "0.0.0.0",
+            "fileVersion": "0.46.0.0"
+          }
+        }
+      },
       "System.CodeDom/4.7.0": {
         "runtime": {
           "lib/netstandard2.0/System.CodeDom.dll": {
@@ -500,6 +512,7 @@
           }
         }
       },
+      "System.Memory/4.5.5": {},
       "System.Runtime.Caching/4.7.0": {
         "dependencies": {
           "System.Configuration.ConfigurationManager": "4.7.0"
@@ -858,6 +871,13 @@
       "path": "runtime.win-x86.runtime.native.system.data.sqlclient.sni/4.4.0",
       "hashPath": "runtime.win-x86.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512"
     },
+    "Spectre.Console/0.46.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-qd2OMEGxfQW1KLuQj56KKHkIK6eB/IUF/AET5CRl/efROHGsvBehx9shfkL0HgJEHLCwRiR7foWi4/LkdPk18g==",
+      "path": "spectre.console/0.46.0",
+      "hashPath": "spectre.console.0.46.0.nupkg.sha512"
+    },
     "System.CodeDom/4.7.0": {
       "type": "package",
       "serviceable": true,
@@ -913,6 +933,13 @@
       "sha512": "sha512-5tBCjAub2Bhd5qmcd0WhR5s354e4oLYa//kOWrkX+6/7ZbDDJjMTfwLSOiZ/MMpWdE4DWPLOfTLOq/juj9CKzA==",
       "path": "system.identitymodel.tokens.jwt/6.8.0",
       "hashPath": "system.identitymodel.tokens.jwt.6.8.0.nupkg.sha512"
+    },
+    "System.Memory/4.5.5": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-XIWiDvKPXaTveaB7HVganDlOCRoj03l+jrwNvcge/t8vhGYKvqV+dMv6G4SAX2NoNmN0wZfVPTAlFwZcZvVOUw==",
+      "path": "system.memory/4.5.5",
+      "hashPath": "system.memory.4.5.5.nupkg.sha512"
     },
     "System.Runtime.Caching/4.7.0": {
       "type": "package",

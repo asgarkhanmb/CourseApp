@@ -73,3 +73,4 @@ C:\Users\Əsgərxan\Desktop\CourseApp\CourseApp\obj\Debug\net6.0\refint\CourseAp
 C:\Users\Əsgərxan\Desktop\CourseApp\CourseApp\obj\Debug\net6.0\CourseApp.pdb
 C:\Users\Əsgərxan\Desktop\CourseApp\CourseApp\obj\Debug\net6.0\CourseApp.genruntimeconfig.cache
 C:\Users\Əsgərxan\Desktop\CourseApp\CourseApp\obj\Debug\net6.0\ref\CourseApp.dll
+C:\Users\Əsgərxan\Desktop\CourseApp\CourseApp\bin\Debug\net6.0\Spectre.Console.dll

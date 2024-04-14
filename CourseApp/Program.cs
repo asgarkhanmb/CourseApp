@@ -1,10 +1,7 @@
 ﻿using CourseApp.Controllers;
-using Repository.Repositories.Interfaces;
-using Repository.Repositories;
-using Service.Services.Interfaces;
-using Service.Services;
 using Service.Enums;
 using Service.Helpers.Extensions;
+using Spectre.Console;
 
 
 EducationController educationController = new EducationController();
@@ -91,14 +88,15 @@ Operation: string operationStr = Console.ReadLine();
 }
 static void GetMenues()
 {
-    ConsoleExtension.WriteConsole(ConsoleColor.Green, "                                                      ☑ Education");
-    ConsoleExtension.WriteConsole(ConsoleColor.DarkRed, "                                                      ~~~~~~~~~~~~");
-    ConsoleExtension.WriteConsole(ConsoleColor.Yellow, "                                     1 - Create Education |~| 2 - Delete Education\n                                     3 - Update Education |~| 4 - Get All Education\n" +
+    AnsiConsole.Write(new FigletText("    Welcome Course ").Color(Color.Red3));
+    ConsoleExtension.WriteConsole(ConsoleColor.Green, "                                                      ☑ Education💻");
+    ConsoleExtension.WriteConsole(ConsoleColor.DarkRed, "                                                      ~~~~~~~~~~~~~");
+    ConsoleExtension.WriteConsole(ConsoleColor.Cyan, "                                     1 - Create Education |~| 2 - Delete Education\n                                     3 - Update Education |~| 4 - Get All Education\n" +
 
       "                           5-Get All With Group Education |~| 6 - Get By Id Education\n                      7 - Sort With CreatedDate Education |~| 8 - Search By Name Education\n");
-    ConsoleExtension.WriteConsole(ConsoleColor.Green, "                                                       ☑ Group");
-    ConsoleExtension.WriteConsole(ConsoleColor.DarkRed, "                                                       ~~~~~~~~");
-    ConsoleExtension.WriteConsole(ConsoleColor.Yellow, "                                         9 - Create Group |~| 10 - Group Delete\n" +
+    ConsoleExtension.WriteConsole(ConsoleColor.Green, "                                                       ☑ Group🧑‍🎓");
+    ConsoleExtension.WriteConsole(ConsoleColor.DarkRed, "                                                       ~~~~~~~~~");
+    ConsoleExtension.WriteConsole(ConsoleColor.Cyan, "                                         9 - Create Group |~| 10 - Group Delete\n" +
         "                                        11 - Update Group |~| 12 - Get All Group\n" +
     "                             13- Sort With Capacity Group |~| 14 - Get By Id Group\n" +
     "                           15- GetAllGroupWithEducationId |~| 16 - SearchGroupByName\n" +
