@@ -11,6 +11,7 @@ C:\Users\Əsgərxan\Desktop\CourseApp\Service\obj\Debug\net6.0\Service.Generated
 C:\Users\Əsgərxan\Desktop\CourseApp\Service\obj\Debug\net6.0\Service.AssemblyInfoInputs.cache
 C:\Users\Əsgərxan\Desktop\CourseApp\Service\obj\Debug\net6.0\Service.AssemblyInfo.cs
 C:\Users\Əsgərxan\Desktop\CourseApp\Service\obj\Debug\net6.0\Service.csproj.CoreCompileInputs.cache
+C:\Users\Əsgərxan\Desktop\CourseApp\Service\obj\Debug\net6.0\Service.sourcelink.json
 C:\Users\Əsgərxan\Desktop\CourseApp\Service\obj\Debug\net6.0\Service.csproj.Up2Date
 C:\Users\Əsgərxan\Desktop\CourseApp\Service\obj\Debug\net6.0\Service.dll
 C:\Users\Əsgərxan\Desktop\CourseApp\Service\obj\Debug\net6.0\refint\Service.dll

@@ -7,6 +7,7 @@ C:\Users\Əsgərxan\Desktop\CourseApp\Domain\obj\Debug\net6.0\Domain.GeneratedMS
 C:\Users\Əsgərxan\Desktop\CourseApp\Domain\obj\Debug\net6.0\Domain.AssemblyInfoInputs.cache
 C:\Users\Əsgərxan\Desktop\CourseApp\Domain\obj\Debug\net6.0\Domain.AssemblyInfo.cs
 C:\Users\Əsgərxan\Desktop\CourseApp\Domain\obj\Debug\net6.0\Domain.csproj.CoreCompileInputs.cache
+C:\Users\Əsgərxan\Desktop\CourseApp\Domain\obj\Debug\net6.0\Domain.sourcelink.json
 C:\Users\Əsgərxan\Desktop\CourseApp\Domain\obj\Debug\net6.0\Domain.dll
 C:\Users\Əsgərxan\Desktop\CourseApp\Domain\obj\Debug\net6.0\refint\Domain.dll
 C:\Users\Əsgərxan\Desktop\CourseApp\Domain\obj\Debug\net6.0\Domain.pdb

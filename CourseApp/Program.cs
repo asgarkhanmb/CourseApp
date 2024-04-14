@@ -1,5 +1,8 @@
-﻿using CourseeApp.Controllers;
+﻿
+
+
+using CourseApp.Controllers;
 
 EducationController educationController = new EducationController();
 
-await educationController.CreateAsync();
+educationController.UpdateAsync();

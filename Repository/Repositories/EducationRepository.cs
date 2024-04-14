@@ -19,9 +19,15 @@ namespace Repository.Repositories
             _context = new AppDbContext();
         }
 
-        public Task<List<EducationAndGroupsDto>> GetAllWithGroupAsync()
+        public async Task<List<EducationAndGroupsDto>> GetAllWithGroupAsync()
         {
-            throw new NotImplementedException();
+            var education = await _context.Educations.Include(m => m.Groups).ToListAsync();
+            var datas = education.Select(m => new EducationAndGroupsDto
+            {
+                Education = m.Name,
+                Groups = m.Groups.Select(m => m.Name).ToList()
+            });
+            return datas.ToList();
         }
 
         public async Task<Education> GetByNameAsync(string name)
