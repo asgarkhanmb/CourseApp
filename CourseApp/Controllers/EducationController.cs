@@ -9,6 +9,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Drawing;
+using Microsoft.EntityFrameworkCore.Metadata.Conventions;
 
 namespace CourseApp.Controllers
 {
@@ -29,43 +31,77 @@ namespace CourseApp.Controllers
             var data = await _educationService.GetAllAsync();
             foreach (var item in data)
             {
-                Console.WriteLine("Education:" + item.Name + " Color:" + item.Color + " CreatedDate:" + item.CreatedDate);
+                Console.WriteLine("Id:" + item.Id  + "Education:" + item.Name + " Color:" + item.Color + " CreatedDate:" + item.CreatedDate);
             }
 
         }
         public async Task GetAllWithGroupAsync()
         {
-            var educations = await _educationService.GetEducationWithGroupsAsync();
-
-
-            foreach (var item in educations)
+            try
             {
-                string result = item.Education + ":" + string.Join(",", item.Groups);
-                Console.WriteLine(result);
+                var educations = await _educationService.GetEducationWithGroupsAsync();
+
+
+                foreach (var item in educations)
+                {
+                    string result = item.Education + ":" + string.Join(",", item.Groups);
+                    Console.WriteLine(result);
+                }
             }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine(ex.Message);
+            }
+            
 
         }
         public async Task CreateAsync()
         {
-        Education: Console.WriteLine("Create Education");
-            string name = Console.ReadLine();
-            var data = await _educationService.GetByNameAsync(name);
-            if (data is not null)
+            try
             {
-                ConsoleColor.Red.WriteConsole(ResponseMesagges.ExistMessage+ResponseMesagges.EnterAgainMessage);
-                goto Education;
+            Education: Console.WriteLine("Create Education");
+                string name = Console.ReadLine();
+                var data = await _educationService.GetByNameAsync(name);
+                if (string.IsNullOrWhiteSpace(name))
+                {
+                    ConsoleExtension.WriteConsole(ConsoleColor.Red, "Education name can't be eempty:");
+                    goto Education;
+                }
+                else if (!name.Any(char.IsLetter))
+                {
+                    ConsoleColor.Red.WriteConsole(ResponseMesagges.IncorrectMessage);
+                    goto Education;
+                }
+                if (data is not null)
+                {
+                    ConsoleColor.Red.WriteConsole(ResponseMesagges.ExistMessage + ResponseMesagges.EnterAgainMessage);
+                    goto Education;
+                }
+            Color: Console.WriteLine("Create Education color");
+                string color = Console.ReadLine();
+                if (string.IsNullOrWhiteSpace(color))
+                {
+                    ConsoleExtension.WriteConsole(ConsoleColor.Red, "Color name can't be eempty:");
+                    goto Color;
+                }
+                else if (!color.Any(char.IsLetter))
+                {
+                    ConsoleColor.Red.WriteConsole(ResponseMesagges.IncorrectMessage);
+                    goto Color;
+                }
+                DateTime dateTime = DateTime.Now;
+
+                await _educationService.CreateAsync(new Education { Name = name.Trim().ToLower(), Color = color.Trim().ToLower(), CreatedDate = dateTime });
+
+                ConsoleColor.Green.WriteConsole(ResponseMesagges.SuccsessMessage);
             }
-            Console.WriteLine("Create Education color");
-            string color = Console.ReadLine();
+            catch (Exception ex)
+            {
 
-
-            DateTime dateTime = DateTime.Now;
-
-
-            await _educationService.CreateAsync(new Education { Name = name.Trim().ToLower(), Color = color.Trim().ToLower(), CreatedDate = dateTime });
-
-
-            ConsoleColor.Green.WriteConsole(ResponseMesagges.SuccsessMessage);
+                Console.WriteLine(ex.Message);
+            }
+      
         }
 
         public async Task DeleteAsync()
@@ -80,6 +116,11 @@ namespace CourseApp.Controllers
 
             Id: Console.WriteLine("Select to id:");
                 string idStr = Console.ReadLine();
+                if (string.IsNullOrWhiteSpace(idStr))
+                {
+                    ConsoleExtension.WriteConsole(ConsoleColor.Red, "Id can't be eempty:");
+                    goto Id;
+                }
                 int id;
                 bool isCorrectIdFormat = int.TryParse(idStr, out id);
                 if (isCorrectIdFormat)
@@ -105,20 +146,35 @@ namespace CourseApp.Controllers
         public async Task GetByIdAsync()
 
         {
-        Id: Console.WriteLine("Add to Id");
-            string idStr = Console.ReadLine();
-            int id;
-            bool isCorrectIdFormat = int.TryParse(idStr, out id);
-            if (isCorrectIdFormat)
+            try
             {
-                var item = await _educationService.GetByIdAsync(id);
-                Console.WriteLine("Education:" + item.Name + " Color:" + item.Color + " CreatedDate:" + item.CreatedDate);
+            IdStr: Console.WriteLine("Add to Id");
+                string idStr = Console.ReadLine();
+                if (string.IsNullOrWhiteSpace(idStr))
+                {
+                    ConsoleExtension.WriteConsole(ConsoleColor.Red, "Id can't be eempty:");
+                    goto IdStr;
+                }
+                int id;
+                bool isCorrectIdFormat = int.TryParse(idStr, out id);
+                if (isCorrectIdFormat)
+                {
+                    var item = await _educationService.GetByIdAsync(id);
+                    Console.WriteLine("Education:" + item.Name + " Color:" + item.Color + " CreatedDate:" + item.CreatedDate);
+                }
+                else
+                {
+                    ConsoleColor.Red.WriteConsole(ResponseMesagges.FormatMessage);
+                    goto IdStr;
+                }
+
             }
-            else
+            catch (Exception ex)
             {
-                ConsoleColor.Red.WriteConsole(ResponseMesagges.FormatMessage);
-                goto Id;
+                ConsoleColor.Red.WriteConsole(ResponseMesagges.DataNotFound);
+                //Console.WriteLine(ex.Message);
             }
+       
 
         }
         public async Task UpdateAsync()
@@ -199,24 +255,47 @@ namespace CourseApp.Controllers
 
         public async Task SearchByNameAsync()
         {
-            Console.WriteLine("Search text");
-            string seacrhText = Console.ReadLine();
-            var data = await _educationService.SearchByNameAsync(seacrhText);
-            foreach (var item in data)
+            try
             {
-                Console.WriteLine("Education:" + item.Name + " Color:" + item.Color + " CreatedDate:" + item.CreatedDate);
+            Search: Console.WriteLine("Search text");
+                string seacrhText = Console.ReadLine();
+                if (string.IsNullOrWhiteSpace(seacrhText))
+                {
+                    ConsoleExtension.WriteConsole(ConsoleColor.Red, "Search can't be eempty:");
+                    goto Search;
+                }
+                var data = await _educationService.SearchByNameAsync(seacrhText);
+                foreach (var item in data)
+                {
+                    Console.WriteLine("Education:" + item.Name + " Color:" + item.Color + " CreatedDate:" + item.CreatedDate);
+                }
+               
             }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine(ex.Message);
+            }
+            
         }
         public async Task SortWithCreatedDateAsync()
         {
-            ConsoleColor.Blue.WriteConsole(ResponseMesagges.ChooseSort);
-            string text = Console.ReadLine();
-            var datas = await _educationService.SortWithCreatedDateAsync(text);
-            foreach (var data in datas)
+            try
             {
-                Console.WriteLine("Name:" + data.Name + " Color:" + data.Color + " CreateDate:" + data.CreatedDate);
+                ConsoleColor.Blue.WriteConsole(ResponseMesagges.ChooseSort);
+                string text = Console.ReadLine();
+                var datas = await _educationService.SortWithCreatedDateAsync(text);
+                foreach (var data in datas)
+                {
+                    Console.WriteLine("Name:" + data.Name + " Color:" + data.Color + " CreateDate:" + data.CreatedDate);
+                }
             }
+            catch (Exception ex)
+            {
 
+                Console.WriteLine(ex.Message);
+            }
+            
         }
 
 
