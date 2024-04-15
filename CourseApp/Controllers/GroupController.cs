@@ -27,20 +27,25 @@ namespace CourseApp.Controllers
         public async Task GetAllAsync()
         {
             var data = await _groupService.GetAllAsync();
-
             foreach (var item in data)
             {
                 var education = await _educationService.GetByIdAsync(item.EducationId);
-                Console.WriteLine("Group:" + item.Name + " Capacity:" + item.Capacity + " Education:" + education.Name + " CreatedDate:" + item.CreatedDate);
+                Console.WriteLine("Id:" + item.Id + "Group:" + item.Name + " Capacity:" + item.Capacity + " Education:" + education.Name + " CreatedDate:" + item.CreatedDate);
             }
+            if (data is null)
+            {
+                ConsoleColor.Red.WriteConsole(ResponseMesagges.DataNotFound);
+            }
+          
+            
 
         }
-        public async Task GetAllGroupWithEducationAsync()
+        public async Task GetGroupByEducationIdAsync(int id)
         {
-            var groups = await _groupService.GetAllWithEducationAsync();
+            var groups = await _groupService.GetGroupByEducationIdAsync(id);
             foreach (var item in groups)
             {
-                string result = item.Group + ":" + string.Join(",", item.Education);
+                string result = item.Id + ":" + string.Join(",", item.Education);
                 Console.WriteLine(result);
             }
         }
@@ -134,20 +139,29 @@ namespace CourseApp.Controllers
         public async Task GetByIdAsync()
 
         {
-        Id: Console.WriteLine("Enter Id");
-            string idStr = Console.ReadLine();
-            int id;
-            bool isCorrectIdFormat = int.TryParse(idStr, out id);
-            if (isCorrectIdFormat)
+            try
             {
-                var item = await _groupService.GetByIdAsync(id);
-                Console.WriteLine("Group:" + item.Name + " Education:" + item.Education + " Capacity:" + item.Capacity + " CreatedDate:" + item.CreatedDate);
+            Id: Console.WriteLine("Enter Id");
+                string idStr = Console.ReadLine();
+                int id;
+                bool isCorrectIdFormat = int.TryParse(idStr, out id);
+                if (isCorrectIdFormat)
+                {
+                    var item = await _groupService.GetByIdAsync(id);
+                    Console.WriteLine("Group:" + item.Name + " Education:" + item.Education + " Capacity:" + item.Capacity + " CreatedDate:" + item.CreatedDate);
+                }
+                else
+                {
+                    ConsoleColor.Red.WriteConsole(ResponseMesagges.FormatMessage);
+                    goto Id;
+                }
             }
-            else
+            catch (Exception )
             {
-                ConsoleColor.Red.WriteConsole(ResponseMesagges.FormatMessage);
-                goto Id;
+
+                ConsoleColor.Red.WriteConsole(ResponseMesagges.DataNotFound);
             }
+        
 
         }
         public async Task UpdateAsync()
@@ -244,66 +258,86 @@ namespace CourseApp.Controllers
 
         public async Task SearchByNameAsync()
         {
+
             try
             {
-                Console.WriteLine("Search text");
+            Search: Console.WriteLine("Search text");
                 string seacrhText = Console.ReadLine();
+                if (string.IsNullOrWhiteSpace(seacrhText))
+                {
+                    ConsoleExtension.WriteConsole(ConsoleColor.Red, "Search can't be eempty:");
+                    goto Search;
+                }
                 var data = await _groupService.SearchByNameAsync(seacrhText);
                 foreach (var item in data)
                 {
-                    Console.WriteLine("Group:" + item.Name + " Education:" + item.Education + " Capacity:" + item.Capacity + " CreatedDate:" + item.CreatedDate);
+                    Console.WriteLine("Id:" + item.Id + "Group:" + item.Name + " Capacity:" + item.Capacity + " Education:" + item.Education + " CreatedDate:" + item.CreatedDate);
                 }
+
             }
             catch (Exception ex)
             {
 
-                ConsoleColor.Red.WriteConsole(ex.Message);
+                Console.WriteLine(ex.Message);
             }
-
         }
-        public async Task SortWithCapacityAsync()
+        public  async Task SortWithCapacityAsync()
         {
             try
             {
                 ConsoleColor.Blue.WriteConsole(ResponseMesagges.ChooseSort);
                 string text = Console.ReadLine();
                 var datas = await _groupService.SortWithCapacityAsync(text);
-                foreach (var data in datas)
+                foreach (var item in datas)
                 {
-                    Console.WriteLine("Name:" + data.Name + " CreatedDate:" + data.Capacity);
+                    Console.WriteLine(" Capacity:" + item.Capacity);
                 }
             }
             catch (Exception ex)
             {
 
-                ConsoleColor.Red.WriteConsole(ex.Message);
+                Console.WriteLine(ex.Message);
             }
         }
         public async Task FilterByEducationNameAsync()
         {
-            var datas = await _educationService.GetAllAsync();
-            foreach (var data in datas)
+            try
             {
-                Console.WriteLine("Id:" + data.Id + " Education:" + data.Name);
-            }
-        Id: ConsoleColor.Yellow.WriteConsole("Enter Education Id");
-            string idStr = Console.ReadLine();
-            int id;
-            bool isCorrectIdFormat = int.TryParse(idStr, out id);
-            if (isCorrectIdFormat)
-            {
-                var data = await _groupService.GetGroupByEducationIdAsync(id);
-                foreach (var item in data)
+                var datas = await _educationService.GetAllAsync();
+                foreach (var data in datas)
                 {
-                    Console.WriteLine(item.Name);
+                    Console.WriteLine("Id:" + data.Id + " Education:" + data.Name);
                 }
+            Name: ConsoleColor.Yellow.WriteConsole("Add Education Name");
+                string name = Console.ReadLine();
+                if (string.IsNullOrWhiteSpace(name))
+                {
+                    ConsoleColor.Red.WriteConsole("Input can't be empty");
+                    goto Name;
+                }
+                var response = await _educationService.SearchByNameAsync(name);
 
+                if (response.Count == 0)
+                {
+                    ConsoleColor.Red.WriteConsole(ResponseMesagges.DataNotFound);
+                }
+                foreach (var item in response)
+                {
+
+                    var education = await _groupService.GetByIdAsync(item.Id);
+
+                    Console.WriteLine("Group:" + education.Name + " Capacity:" + education.Capacity + " CreatedDate:" + education.CreatedDate);
+
+
+
+                }
             }
-            else
+            catch (Exception)
             {
-                ConsoleColor.Red.WriteConsole(ResponseMesagges.FormatMessage);
-                goto Id;
+
+                ConsoleColor.Red.WriteConsole(ResponseMesagges.DataNotFound);
             }
+            
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Domain.Models;
+using Microsoft.EntityFrameworkCore.Internal;
 using Repository.Data;
 using Repository.DTOs.GroupDTOs;
 using Repository.Repositories.Interfaces;
@@ -19,6 +20,17 @@ namespace Repository.Repositories
             _context = new AppDbContext();
         }
 
+        public async Task<List<GroupAndEducationDto>> GetAllWithEducationAsync()
+        {
+            var groups = await _context.Groups.Include(m => m.Education).ToListAsync();
+            var datas = groups.Select(m => new GroupAndEducationDto
+            {
+                Group = m.Name,
+                Education = m.Education.Name
+            });
+            return datas.ToList();
+        }
+
         public async Task<Group> GetByNameAsync(string name)
         {
             return await _context.Groups.FirstOrDefaultAsync(m => m.Name == name);
@@ -35,11 +47,11 @@ namespace Repository.Repositories
 
         public async Task<List<Group>> SortWithCapacityAsync(string text)
         {
-            if (text.ToLower().Trim() == "asc")
+            if (text.ToLower().Trim() == "ASC")
             {
                 return await _context.Groups.OrderBy(m => m.Capacity).ToListAsync();
             }
-            else if (text.ToLower().Trim() == "desc")
+            else if (text.ToLower().Trim() == "DESC")
             {
                 return await _context.Groups.OrderByDescending(m => m.Capacity).ToListAsync();
             }
@@ -52,17 +64,6 @@ namespace Repository.Repositories
         public async Task<List<Group>> GetGroupByEducationIdAsync(int id)
         {
             return await _context.Groups.Where(m => m.EducationId == id).ToListAsync();
-        }
-
-        public async Task<List<GroupAndEducationDto>> GetAllWithEducationAsync()
-        {
-            var groups = await _context.Groups.Include(m => m.Education).ToListAsync();
-            var datas = groups.Select(m => new GroupAndEducationDto
-            {
-                Group = m.Name,
-                Education = m.Education.Name
-            });
-            return datas.ToList();
         }
     }
 }

@@ -66,8 +66,8 @@ Operation: string operationStr = Console.ReadLine();
             case (int)OperationType.GroupGetById:
                 await groupController.GetByIdAsync();
                 break;
-            case (int)OperationType.GetAllGroupWithEducationId:
-                await groupController.GetAllGroupWithEducationAsync();
+            case (int)OperationType.GetGroupByEducationId:
+                await groupController.GetByIdAsync();
                 break;
             case (int)OperationType.GroupSearchByName:
                 await groupController.SearchByNameAsync();

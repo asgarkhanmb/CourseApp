@@ -11,9 +11,12 @@ namespace Repository.Repositories.Interfaces
     public interface IGroupRepository:IBaseRepository<Group>
     {
         Task<List<Group>> SearchByNameAsync(string searchText);
+        Task<Group> GetByNameAsync(string name);
+        Task<List<GroupAndEducationDto>> GetAllWithEducationAsync();
+
         Task<List<Group>> SortWithCapacityAsync(string text);
         Task<List<Group>> GetGroupByEducationIdAsync(int id);
-        Task<List<GroupAndEducationDto>> GetAllWithEducationAsync();
-        Task<Group> GetByNameAsync(string name);
+
+
     }
 }

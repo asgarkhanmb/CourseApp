@@ -8,7 +8,7 @@ namespace Service.Enums
 {
     public enum OperationType
     {
-        EducationCreate = 1,
+        EducationCreate =1,
         EducationDelete,
         EducationUpdate,
         EducationGetAll,
@@ -22,7 +22,7 @@ namespace Service.Enums
         GroupGetAll,
         GroupSortWithCapacity,
         GroupGetById,
-        GetAllGroupWithEducationId,
+        GetGroupByEducationId,
         GroupSearchByName,
         FilterByEducationName
     }
